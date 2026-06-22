@@ -32,17 +32,81 @@ Sales teams and founders spend hours manually copying logos, hex codes, and comp
 
 ## Installation
 
+### Option 1 — pip (Recommended)
+
 ```bash
 pip install auto-sales-deck
 ```
 
-Or install from source:
+### Option 2 — Install from Source
 
 ```bash
 git clone https://github.com/adityasahi/sales.git
 cd sales
 pip install -e .
 ```
+
+### Option 3 — Windows Subsystem for Linux (WSL)
+
+> Most developers on Windows use WSL (Ubuntu) for Python CLI tools. Here's how to get fully set up.
+
+**Step 1 — Install WSL (if you haven't already)**
+
+Open PowerShell as Administrator and run:
+
+```powershell
+wsl --install
+```
+
+This installs WSL 2 with Ubuntu by default. Restart your machine when prompted.
+
+**Step 2 — Open your WSL terminal and update packages**
+
+```bash
+sudo apt update && sudo apt upgrade -y
+```
+
+**Step 3 — Install Python 3.9+**
+
+```bash
+sudo apt install python3 python3-pip python3-venv -y
+python3 --version  # confirm 3.9+
+```
+
+**Step 4 — Install Node.js and Marp CLI**
+
+```bash
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+sudo apt install -y nodejs
+npm install -g @marp-team/marp-cli
+marp --version  # confirm marp is available
+```
+
+**Step 5 — Clone and install auto-sales-deck**
+
+```bash
+git clone https://github.com/adityasahi/sales.git
+cd sales
+pip3 install -e .
+```
+
+**Step 6 — Set your API key**
+
+```bash
+export CONTEXT_API_KEY="your_api_key_here"
+
+# To persist across sessions, add to your shell profile:
+echo 'export CONTEXT_API_KEY="your_api_key_here"' >> ~/.bashrc
+source ~/.bashrc
+```
+
+**Step 7 — Generate your first deck**
+
+```bash
+deck-cli generate --domain stripe.com --output pdf
+```
+
+> **Tip for WSL users:** Your generated PDFs land in `./output/` inside WSL. To access them from Windows Explorer, navigate to `\\wsl$\Ubuntu\home\<your-username>\sales\output\`.
 
 ---
 
